@@ -45,12 +45,6 @@ class BloodList extends StateList {
     async queryType(type){
         return this.queryByType(type);
     }
-    async queryByHospital(hospitalID) {
-        return this.queryKeyByHospital(hospitalID);
-    }
-    async queryByBloodBank (ownerID){
-        return this.queryKeyByBloodBank(ownerID)
-    }
 }
 
 module.exports = BloodList;

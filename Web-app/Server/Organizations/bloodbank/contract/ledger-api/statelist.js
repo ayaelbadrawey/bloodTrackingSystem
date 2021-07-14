@@ -192,9 +192,9 @@ class StateList {
     }
     /**
     * queryKeyByOwner hospital
-    * @param {String} hospitalID hospital blood bags
+    * @param {String} ownerID hospital blood bags
     */
-    async queryKeyByHospital(hospitalID) {
+    async queryKeyByHospital(ownerID) {
       
         let self = this;
         if (arguments.length < 1) {
@@ -203,7 +203,7 @@ class StateList {
         let queryString = {};
         queryString.selector = {};
         //  queryString.selector.docType = 'indexOwnerDoc';
-        queryString.selector.hospitalID = hospitalID;
+        queryString.selector.ownerID = ownerID;
         // set to (eg)  '{selector:{owner:MagnetoCorp}}'
         let method = self.getQueryResultForQueryString;
         let queryResults = await method(this.ctx, self, JSON.stringify(queryString));

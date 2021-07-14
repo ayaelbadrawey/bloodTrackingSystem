@@ -35,7 +35,7 @@ async function main() {
 
         // const instantiateDonation = await contract.submitTransaction('instantiateDonation');
         // console.log(' instantiate Donation complete.');
-
+        
         // const instantiateTransportation = await contract.submitTransaction('instantiateTrasnprtation');
         // console.log(' instantiate under transportation complete.');
 

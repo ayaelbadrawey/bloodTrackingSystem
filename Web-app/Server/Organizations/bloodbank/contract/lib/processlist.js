@@ -33,6 +33,12 @@ class ProcessList extends StateList {
     async processExists(processKey) {
         return this.exists(processKey);
     }
+    async queryByHospital(ownerID) {
+        return this.queryKeyByHospital(ownerID);
+    }
+    async queryByBloodBank (ownerID){
+        return this.queryKeyByBloodBank(ownerID)
+    }
 
 }
 

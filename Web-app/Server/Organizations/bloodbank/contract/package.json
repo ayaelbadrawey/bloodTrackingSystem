@@ -1,6 +1,6 @@
 {
     "name": "bloodcontract",
-    "version": "0.0.134",
+    "version": "0.0.136",
     "description": "Blood Contract",
     "main": "index.js",
     "engines": {

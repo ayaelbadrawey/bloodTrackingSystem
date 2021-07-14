@@ -582,11 +582,11 @@ class BloodContract extends Contract {
     /**
     * queryOwner commercial paper: supply name of owning org, to find list of blood bags based on owner field
     * @param {Context} ctx the transaction context
-    * @param {String} hospitalID blood bag owner
+    * @param {String} ownerID blood bag owner
     */
-    async queryHospitalOwner(ctx, hospitalID) {
+    async queryHospitalOwner(ctx, ownerID) {
 
-        return await ctx.bloodList.queryByHospital(hospitalID);
+        return await ctx.processList.queryByHospital(ownerID);
     }
     /**
     * queryOwner commercial paper: supply name of owning org, to find list of blood bags based on owner field
@@ -595,7 +595,7 @@ class BloodContract extends Contract {
     */
     async queryBloodBankOwner(ctx, ownerID) {
 
-        return await ctx.bloodList.queryByBloodBank(ownerID);
+        return await ctx.processList.queryByBloodBank(ownerID);
     }
     /**
     * @param {Context} ctx the transaction context
