@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './fontawesome';
+import './css/headers.css'
+import './css/Hospital-Bag-Recieved.css'
+import './css/Login-form.css'
+import './css/footer.css'
+import './css/Hospital-Options.css'
+import './css/TrackingBlood.css'
+import './css/RetrieveBloodBags.css'
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,7 +18,3 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
