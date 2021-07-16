@@ -17,7 +17,7 @@ const morgan = require('morgan');
 const app = express();
 const httpServer = http.createServer(app);
 
-const PORT = process.env.PORT || 5000 ;
+const PORT = 5003 ;
 
 app.use(morgan('combined'));
 app.use(cors());
@@ -33,6 +33,9 @@ app.set('port', PORT);
 app.route('/query/bag').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
+
+        const id1 = req.query.id;
+
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
         const userName = 'Client@org1.example.com';
@@ -58,7 +61,7 @@ app.route('/query/bag').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------Query Blood Bag--------------------');
-        const qBagResponse1 = await contract.evaluateTransaction('queryBloodBag', 'BD500:AB+');
+        const qBagResponse1 = await contract.evaluateTransaction('queryBloodBag', id1);
         console.log(`${qBagResponse1.toString()}`);
         console.log('Transaction complete.');
 
@@ -85,6 +88,9 @@ app.route('/query/bag').get(async(req, res, next)=>{
 app.route('/get/history').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
+
+        const id1 = req.query.id;
+
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
         const userName = 'Client@org1.example.com';
@@ -110,7 +116,7 @@ app.route('/get/history').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------History of Blood Bag--------------------');
-        const historyResponse = await contract.evaluateTransaction('getHistoryForBloodBag', 'BD244:O-');
+        const historyResponse = await contract.evaluateTransaction('getHistoryForBloodBag', id1);
         console.log(`${historyResponse.toString()}`);
         console.log('Transaction complete.');
 
@@ -137,6 +143,9 @@ app.route('/get/history').get(async(req, res, next)=>{
 app.route('/query/donor').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
+
+        const did1 = req.query.did;
+
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
         const userName = 'Client@org1.example.com';
@@ -162,7 +171,7 @@ app.route('/query/donor').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------Query Blood Bags of Donor--------------------');
-        const qdonorResponse = await contract.evaluateTransaction('queryDonorOwner', 'D101');
+        const qdonorResponse = await contract.evaluateTransaction('queryDonorOwner', did1);
         console.log(`${qdonorResponse.toString()}`);
         console.log('Transaction complete.');
 
@@ -189,6 +198,9 @@ app.route('/query/donor').get(async(req, res, next)=>{
 app.route('/query/patient').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
+
+        const pid1 = req.query.pid;
+
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
         const userName = 'Client@org1.example.com';
@@ -214,7 +226,7 @@ app.route('/query/patient').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------Query Blood Bags of Patient--------------------');
-        const qpatientResponse = await contract.evaluateTransaction('queryPatientOwner', 'R106');
+        const qpatientResponse = await contract.evaluateTransaction('queryPatientOwner', pid1);
         console.log(`${qpatientResponse.toString()}`);
         console.log('Transaction complete.');
 
@@ -241,6 +253,9 @@ app.route('/query/patient').get(async(req, res, next)=>{
 app.route('/search/type').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
+
+        const type1 = req.query.type;
+
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
         const userName = 'Client@org1.example.com';
@@ -266,7 +281,7 @@ app.route('/search/type').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------Search for Blood TYpe--------------------');
-        const changeResponse = await contract.submitTransaction('searchBloodType', 'AB+');
+        const changeResponse = await contract.submitTransaction('searchBloodType', type1);
         console.log(`${changeResponse.toString()}`);
         console.log('Transaction complete.');
 
