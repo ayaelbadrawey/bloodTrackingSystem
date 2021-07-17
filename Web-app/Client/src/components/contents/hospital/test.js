@@ -15,17 +15,23 @@ function TestFn(){
     function Test1(){
         const {id} = "BD576:O-"
         const url = "http://localhost:5001/query/bag?id=BD576:O-";
-        Axios.get(url).then((response)=> {setOut(response.data); console.log(response.data)});
-
-       //if(out){
-         //   content = out; 
-            //alert(out);
-        //}
-        //alert(out);
-        //console.log(out.output);
-        alert(out);
+        const [data, setData] = useState(null);
+ 
+        useEffect(() => {
+          const fetchData = async () => {
+            const result = await Axios((url),
+            );
+            setData(result.data);
+          };
+          fetchData();
+        }, [url]);
+        if(data){
+          content = data;
+          alert(data.output);
+        }
+       
     };
-    //if(!content){
+    if(!content){
     return(
         <div>
       <HospitalHeader/>
@@ -37,7 +43,7 @@ function TestFn(){
           <input type="text" name="" required=""/>
           <label>Enter Blood Bag ID</label>
         </div>
-        <button id="confirm" onClick={Test1} >
+        <button id="confirm" onClick={Test1()} >
           <span></span>
           <span></span>
           <span></span>
@@ -49,10 +55,10 @@ function TestFn(){
     </div>
     </div>  
     );
-    //}
-    //else{
-     //   return <div></div>
-    //}
+    }
+    else{
+        return <div>oops</div>
+    }
 }
 
 export default TestFn;
