@@ -7,31 +7,32 @@ import Connect from './connectRecieve';
 import Axios from 'axios';
 import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
+import axios from 'axios';
+import axioss from './axios'
 
 
-function TestFn(){
-    let content = null;
-    let [out, setOut] = useState(null);
-    function Test1(){
-        const {id} = "BD576:O-"
-        const url = "http://localhost:5001/query/bag?id=BD576:O-";
-        const [data, setData] = useState(null);
- 
-        useEffect(() => {
-          const fetchData = async () => {
-            const result = await Axios((url),
-            );
-            setData(result.data);
-          };
-          fetchData();
-        }, [url]);
-        if(data){
-          content = data;
-          alert(data.output);
-        }
-       
-    };
-    if(!content){
+export class TestFn extends Component{
+    constructor(props){
+      super(props)
+      this.state={
+        posts:[]
+      }
+    }
+
+    componentDidMount(){
+      axios.get('http://localhost:5000/query/bag?id=BD576:O-')
+      .then(response =>{
+        console.log(response);
+        alert(response.data.output)
+        this.setState({posts:response.data.output})
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+    }
+
+    render(){
+      const {posts} = this.state
     return(
         <div>
       <HospitalHeader/>
@@ -43,22 +44,26 @@ function TestFn(){
           <input type="text" name="" required=""/>
           <label>Enter Blood Bag ID</label>
         </div>
-        <button id="confirm" onClick={Test1()} >
+        <button id="confirm" onClick={axios}>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Confirm
         </button>
+        <div>
+          output
+          {
+            posts.length ?
+            <div key={posts.DIN}> {posts}</div>:
+            null
+          }
+        </div>
       </form>
     </div>
     </div>
     </div>  
     );
-    }
-    else{
-        return <div>oops</div>
-    }
+    
+  }
 }
-
-export default TestFn;
