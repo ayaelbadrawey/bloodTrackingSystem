@@ -44,7 +44,7 @@ export class TestFn extends Component{
           <input type="text" name="" required=""/>
           <label>Enter Blood Bag ID</label>
         </div>
-        <button id="confirm" onClick={axios}>
+        <button id="confirm" onClick={}>
           <span></span>
           <span></span>
           <span></span>
