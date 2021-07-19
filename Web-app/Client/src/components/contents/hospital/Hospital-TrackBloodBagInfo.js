@@ -1,6 +1,8 @@
 import HospitalHeader from "../../headers/hospital";
 import {Component} from 'react'
 import axios from 'axios'
+import TrigerAxios from './Hospital-TrackingBlood'
+
 
 export default class  hospitalTrackBloodBagInfo extends Component{
   constructor(props){
