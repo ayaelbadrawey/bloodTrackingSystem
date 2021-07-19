@@ -1,57 +1,59 @@
-import { findDOMNode } from 'react-dom';
-import {useHistory} from 'react-router-dom'
 import HospitalHeader from '../../headers/hospital'
 import $ from 'jquery'
 import { Component } from 'react';
 import Connect from './connectRecieve';
-import Axios from 'axios';
-import {useParams} from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import axios from 'axios';
 
-function HospitalBagRecieved() {
-  let content=null;
-  
-
-  /*const ClickHandler = ()=>{
-    const {id} = "BD576:O-"
-    const url = "http://localhost:5001/query/bag?id=BD500:A-";
-    const [out, setOut] = useState([]);
-    
-    useEffect(() => {
-      Axios.get(url)
-        .then((response)=> {
-           setOut(response.data);
-      });
-    }, [url]);
-
-    if(out){
-      content = out; 
-      alert("Friends");
+export class HospitalBagRecieved extends Component{
+    constructor(props){
+      super(props)
+      this.state={
+        bNumber: null,
+        currentDateTime: null
+      }
     }
-  }*/
 
-  function ClickHandler2(){
-    
-    // const {id} = "BD576:O-"
-    // const url = "http://localhost:5001/query/bag?id=BD500:A-";
-    // const [out, setOut] = useState([]);
-    
-    // useEffect(() => {
-    //   Axios.get(url)
-    //     .then((response)=> {
-    //        setOut(response.data);
-    //   });
-    // }, [url]);
+    TrigerAxios(event){
+      event.preventDefault();
+      const currentDate2 = new Date();
+      const date = currentDate2.getDate() +'/'+(currentDate2.getMonth()+1) +'/'+currentDate2.getFullYear()
+      const time = currentDate2.getHours() +':'+currentDate2.getMinutes() +':'+currentDate2.getSeconds()
+      const currentDate = date + " " + time  
+      axios.get(`http://localhost:5001/second/state?id=${this.state.bNumber}&time=${currentDate}`)
+      .then(response =>{
+        let output = Object.values(response.data);
+        this.TrigerAxios2(event);
+        console.log("Change State Confirmed")
+      })
+      .catch(error=>{
+        console.log("TEST ERROR", error)
+      })
 
-    // if(out){
-    //   content = out; 
-    //   alert("Friends");
-    // }
-    alert("HELLOOO");
-  };
+    }
+    TrigerAxios2(event){
+      event.preventDefault();
+      const currentDate2 = new Date();
+      const date = currentDate2.getDate() +'/'+(currentDate2.getMonth()+1) +'/'+currentDate2.getFullYear()
+      const time = currentDate2.getHours() +':'+currentDate2.getMinutes() +':'+currentDate2.getSeconds()
+      const currentDate = date + " " + time  
+      axios.get(`http://localhost:5001/change/location?id=${this.state.bNumber}&loc=HOSPITAL&oid=BB102&time=${currentDate}`)
+      .then(response =>{
+        let output = Object.values(response.data);
+        let objectOutput = JSON.parse(output[0]);
+        console.log("RESPONSE", objectOutput.DIN);
+        alert("Confirmed")
+      })
+      .catch(error=>{
+        console.log("TEST ERROR", error)
+      })
+    }
+    handleInoutChange(value){
+      this.setState({
+        bNumber: value
+      })
+    }
 
-
-  if(!content){
+    render(){
     return(
       <div>
       <HospitalHeader/>
@@ -60,27 +62,20 @@ function HospitalBagRecieved() {
       <h2>Info Needed</h2>
       <form >
         <div className="user-box">
-          <input type="text" name="" required=""/>
+          <input type="text" value={this.state.bNumber} onChange={(e) =>{this.handleInoutChange(e.target.value)}}/>
           <label>Enter Blood Bag ID</label>
         </div>
-        <button id="confirm" type="submit" onClick={ClickHandler2} >
+        <a id="confirm" onClick={(event)=>this.TrigerAxios(event)}>
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           Confirm
-        </button>
+        </a>        
       </form>
     </div>
     </div>
     </div>  
-  );
-    }
-  else{
-    return(
-      <div><h1> {content.output}</h1></div>
-    )
-  }
+    );
+      }
 }
-
-export default HospitalBagRecieved;

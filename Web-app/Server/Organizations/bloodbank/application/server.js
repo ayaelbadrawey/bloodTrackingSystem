@@ -66,7 +66,7 @@ app.route('/query/bag').get(async(req, res, next)=>{
 
         const output = qBagResponse1.toString()
 
-        res.status(200).json({
+        res.status(200).send({
             output
         });
     }

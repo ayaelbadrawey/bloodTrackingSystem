@@ -350,6 +350,7 @@ class BloodContract extends Contract {
     if (await ctx.bloodList.bagExists(bloodnum)) {
         throw new Error(`Blood Bag with ID ${bloodnum} is already exist`);
     }
+    
 
     //check if this is a valid donor id
     if(donorID.startsWith("D")){

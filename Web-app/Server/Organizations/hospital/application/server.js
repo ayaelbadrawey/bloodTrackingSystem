@@ -205,7 +205,7 @@ app.route('/change/location').get(async(req, res, next)=>{
         const id1 = req.query.id;
         const loc1 = req.query.loc;
         const oid1 = req.query.oid;
-        const time1 = req.query.time1;
+        const time1 = req.query.time;
 
         // Specify userName for network access
         // const userName = 'isabella.issuer@magnetocorp.com';
