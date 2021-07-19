@@ -3,7 +3,6 @@ import {useHistory} from 'react-router-dom'
 import HospitalHeader from '../../headers/hospital'
 import $ from 'jquery'
 import { Component } from 'react';
-import Connect from './connectRecieve';
 import {useParams} from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import axios from 'axios';

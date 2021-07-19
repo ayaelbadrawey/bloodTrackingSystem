@@ -1,15 +1,15 @@
 import HospitalHeader from '../../headers/hospital'
 import $ from 'jquery'
 import { Component } from 'react';
-import Connect from './connectRecieve';
 import axios from 'axios';
+import ErrorAlert from './ErrorAlert'
 
 export class HospitalBagRecieved extends Component{
     constructor(props){
       super(props)
       this.state={
         bNumber: null,
-        currentDateTime: null
+        errorMessage: null
       }
     }
 
@@ -27,6 +27,8 @@ export class HospitalBagRecieved extends Component{
       })
       .catch(error=>{
         console.log("TEST ERROR", error)
+        this.setState({errorMessage:"error"})
+        
       })
 
     }
@@ -57,6 +59,7 @@ export class HospitalBagRecieved extends Component{
     return(
       <div>
       <HospitalHeader/>
+      {this.state.errorMessage="error"?<ErrorAlert />:null}
       <div id="rec">
       <div class="login-box">
       <h2>Info Needed</h2>

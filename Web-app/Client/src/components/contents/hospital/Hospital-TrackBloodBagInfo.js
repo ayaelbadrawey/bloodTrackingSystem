@@ -1,6 +1,21 @@
 import HospitalHeader from "../../headers/hospital";
+import {Component} from 'react'
+import axios from 'axios'
 
-function hospitalTrackBloodBagInfo(){
+export default class  hospitalTrackBloodBagInfo extends Component{
+  constructor(props){
+    super(props)
+    this.state={
+      bNumber: null,
+    }
+  }
+  handleInputChange(value){
+    this.setState({
+      bNumber: value
+    })
+  }
+
+  render(){
     return(
         <div>
             <HospitalHeader />
@@ -8,7 +23,7 @@ function hospitalTrackBloodBagInfo(){
     <h2>Info Needed</h2>
     <form>
       <div class="user-box">
-        <input type="text" name="" required=""/>
+        <input type="text" value={this.state.bNumber} onChange={(e) =>{this.handleInputChange(e.target.value)}}/>
         <label>Enter Blood Bag ID</label>
       </div>
       <a id="button" href="#" >
@@ -24,4 +39,4 @@ function hospitalTrackBloodBagInfo(){
         
     );
 }
-export default hospitalTrackBloodBagInfo;
+}
