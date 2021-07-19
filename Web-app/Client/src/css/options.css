@@ -1,0 +1,17 @@
+/*blood bank options*/
+
+#carouselMultiItemExample .carousel-inner{
+    position: relative;
+}
+#carouselMultiItemExample #newDonation{
+    position: relative; height: 1000px;
+}
+#carouselMultiItemExample #sendBag{
+    position: relative; height: 900px;
+}
+#carouselMultiItemExample #trackBlood{
+    position: relative; height: 600px;
+}
+
+
+/*----------------------------------------------*/

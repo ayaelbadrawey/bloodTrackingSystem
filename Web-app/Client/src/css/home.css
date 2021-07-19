@@ -1,0 +1,576 @@
+
+#home #Carousel{
+    width: 90%;
+    margin-left: 5%;
+    
+}
+#home .carousel-caption{
+    color: black;
+    background-color: #f5f5dc7a;
+}
+#home #Carousel .image{
+    width: 100%;
+    height: 600px;
+}
+#home #cards{
+     width: 90%;
+     margin-left: 5%;
+    
+ }
+ #home #cards .card-title, .card-text:last-child, .card-body {
+    text-align: center;
+ }
+ #home .card-group>.card:not(:first-child) .card-header, .card-group>.card:not(:first-child) .card-img-top{
+    margin-top: 20px;
+	height: 300px;
+ }
+ #home .card-group>.card:not(:last-child) .card-header, .card-group>.card:not(:last-child) .card-img-top {
+    margin-top: 20px;
+	height: 300px;
+ }
+ #home .card-group>.card {
+     margin-right: 20px;
+	 border: solid 0.01rem rgb(218, 213, 213);
+ }
+ #home  #cards a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px;
+}
+#home #cards a {
+    color:white;
+    text-decoration: none;
+    background-color: #C31313;
+    -webkit-text-decoration-skip: objects;
+}
+#home #cards a:hover, a::after{
+    background-color: white;
+    color: #C31313;
+    border:2px solid #C31313;
+}
+#team {
+    padding: 130px 0;
+    width: 90%;
+    margin-left: 5%;
+    
+    background-color: white;
+}
+
+#team h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+
+}
+
+#team h2 span {
+    color: #ff9100;
+}
+
+#team p {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #999999;
+    margin: 20px 0 60px;
+    padding: 0;
+}
+
+#team .box {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all .5s ease-in-out;
+}
+
+#team .box .image {
+    position: relative;
+    height: 100%;
+}
+
+#team .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff9100 1%, red 100%);
+    top: 0;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 15;
+}
+
+#team .box .image .social-icons {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #ffffff;
+    z-index: 20;
+    text-decoration: none;
+    opacity: 0;
+    margin-top: 100px;
+    padding: 8px 15px;
+    background: #ffffff;
+    border-radius: 35px;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+}
+
+#team .box .image .social-icons i {
+    font-size: 18px;
+    padding: 0 7px;
+    color: #ff9100;
+}
+
+#team .box:hover .overlay {
+    opacity: 0.85;
+}
+
+#team .box:hover .social-icons {
+    margin-top: 0;
+    opacity: 1;
+}
+
+#team .box h3 {
+    margin: 0;
+    padding: 0;
+    margin-top: 20px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+#team .box h4 {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #999999;
+    font-weight: 400;
+    margin-top: 5px;
+    padding-bottom: 25px;
+    width: 200px;
+    margin-left: 40px;
+
+}
+
+#team .box:hover {
+    transform: translateY(-15px);
+}
+#team .container, .container-lg, .container-md, .container-sm{
+    margin-top: -100px;
+    margin-bottom: -100px;
+}
+#team .member{
+    width: 300px;
+   
+}
+#team #first{
+    margin-left: 120px;
+}
+#team .middle{
+    margin-left: 80px;
+}
+#team .last{
+    margin-left: 80px;
+}
+#team .first2{
+    margin-left: 300px;
+    margin-top: 40px;
+}
+#team .second{
+    margin-left: 80px;
+    margin-top: 40px;
+}
+#logins{
+    height: 10%;
+}
+
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i|IBM+Plex+Sans+Condensed:400,400i|IBM+Plex+Sans:100,100i,400,400i,700,700i|IBM+Plex+Serif:400,400i");
+ .about {
+	 position: fixed;
+	 z-index: 10;
+	 bottom: 10px;
+	 right: 10px;
+	 width: 40px;
+	 height: 20%;
+	 display: flex;
+	 justify-content: flex-end;
+	 align-items: flex-end;
+	 transition: all 0.2s ease;
+}
+ .about .bg_links {
+	 width: 40px;
+	 height: 40px;
+	 border-radius: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 background-color: rgba(255, 255, 255, 0.2);
+	 border-radius: 100%;
+	 backdrop-filter: blur(5px);
+	 position: absolute;
+}
+ .about .logo {
+	 width: 40px;
+	 height: 40px;
+	 z-index: 9;
+	 background-image: url(https://rafaelalucas91.github.io/assets/codepen/logo_white.svg);
+	 background-size: 50%;
+	 background-repeat: no-repeat;
+	 background-position: 10px 7px;
+	 opacity: 0.9;
+	 transition: all 1s 0.2s ease;
+	 bottom: 0;
+	 right: 0;
+}
+ .about .social {
+	 opacity: 0;
+	 right: 0;
+	 bottom: 0;
+}
+ .about .social .icon {
+	 width: 100%;
+	 height: 100%;
+	 background-size: 20px;
+	 background-repeat: no-repeat;
+	 background-position: center;
+	 background-color: transparent;
+	 display: flex;
+	 transition: all 0.2s ease, background-color 0.4s ease;
+	 opacity: 0;
+	 border-radius: 100%;
+}
+ .about .social.portfolio {
+	 transition: all 0.8s ease;
+}
+ .about .social.portfolio .icon {
+	 background-image: url(https://rafaelalucas91.github.io/assets/codepen/link.svg);
+}
+ .about .social.dribbble {
+	 transition: all 0.3s ease;
+}
+ .about .social.dribbble .icon {
+	 background-image: url(https://rafaelalucas91.github.io/assets/codepen/dribbble.svg);
+}
+ .about .social.linkedin {
+	 transition: all 0.8s ease;
+}
+ .about .social.linkedin .icon {
+	 background-image: url(https://rafaelalucas91.github.io/assets/codepen/linkedin.svg);
+}
+ .about:hover {
+	 width: 105px;
+	 height: 105px;
+	 transition: all 0.6s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+ .about:hover .logo {
+	 opacity: 1;
+	 transition: all 0.6s ease;
+}
+ .about:hover .social {
+	 opacity: 1;
+}
+ .about:hover .social .icon {
+	 opacity: 0.9;
+}
+ .about:hover .social:hover {
+	 background-size: 28px;
+}
+ .about:hover .social:hover .icon {
+	 background-size: 65%;
+	 opacity: 1;
+}
+ .about:hover .social.portfolio {
+	 right: 0;
+	 bottom: calc(100% - 40px);
+	 transition: all 0.3s 0s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+ .about:hover .social.portfolio .icon:hover {
+	 background-color: #698fb7;
+}
+ .about:hover .social.dribbble {
+	 bottom: 45%;
+	 right: 45%;
+	 transition: all 0.3s 0.15s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+ .about:hover .social.dribbble .icon:hover {
+	 background-color: #ea4c89;
+}
+ .about:hover .social.linkedin {
+	 bottom: 0;
+	 right: calc(100% - 40px);
+	 transition: all 0.3s 0.25s cubic-bezier(0.64, 0.01, 0.07, 1.65);
+}
+ .about:hover .social.linkedin .icon:hover {
+	 background-color: #0077b5;
+}
+/* main 1*/
+/* main 2*/
+/* neutral 1*/
+/* neutral 2*/
+
+ #wrapper {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 width: 100%;
+}
+ .content {
+	 width: 90%;
+	 margin: 0 5%;
+     height: 400px;
+	 transition: 0.3s ease;
+}
+ @media screen and (max-width: 512px) {
+	 .content {
+		 margin: 0 4%;
+		 margin-top: 5%;
+	}
+}
+/* Tabs menu */
+ .tabs {
+	 margin: 0;
+	 background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+	 display: flex;
+	 justify-content: space-between;
+	 align-items: center;
+	 height: 80px;
+	 border-radius: 2px 2px 0px 0px;
+}
+ @media screen and (max-width: 512px) {
+	 .tabs {
+		 height: 40px;
+	}
+}
+/* Tab Links */
+ .tablinks {
+	 background: transparent;
+	 background-image: linear-gradient(90deg, transparent 70%, rgba(255, 255, 255, 0.2) 100%);
+	 border: none;
+	 outline: none;
+	 cursor: pointer;
+	 width: 35%;
+	/*change depending on the number of tabs*/
+	 height: 80px;
+	 position: relative;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 font-size: 16px;
+	 font-family: "IBM Plex Sans", sans-serif;
+	 overflow: hidden;
+	 transition: 0.3s ease;
+}
+ @media screen and (max-width: 512px) {
+	 .tablinks {
+		 height: 40px;
+		 font-size: 12px;
+	}
+}
+ .tablinks:before {
+	/* Gradient */
+	 background-image: linear-gradient(135deg, #C31313 0%, #764ba2 100%);
+	 content: "";
+	 width: 100%;
+	 height: 0px;
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 transition: 0.3s ease-in-out;
+	 z-index: 2;
+}
+/*tab buttons hover*/
+ .tablinks:hover::before {
+	 height: 100%;
+	 z-index: 2;
+	 bottom: 0;
+}
+ @media screen and (max-width: 512px) {
+	 .tablinks:hover::before {
+		 height: 0;
+	}
+}
+/* Tab active */
+ .tablinks.active {
+	 background-color: white;
+	 z-index: 0;
+	 border-right: 0px;
+	 border-left: 0px;
+	 height: 110px;
+	 bottom: 0px;
+	 overflow: hidden;
+}
+ @media screen and (max-width: 512px) {
+	 .tablinks.active {
+		 height: 60px;
+	}
+}
+ .tablinks.active:before {
+	/* Gradient */
+	 content: "";
+	 width: 100%;
+	 height: 5px;
+	 top: 0;
+	 left: 0;
+}
+/* Tabs text */
+ .tablinks.active p, .tablinks.active:hover p {
+	 opacity: 1;
+	 background: -webkit-linear-gradient(135deg, #C31313 0%, #764ba2 100%);
+	 -webkit-background-clip: text;
+}
+ .tablinks p {
+	 opacity: 0.6;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 z-index: 2;
+	 transition: 0.5s ease;
+	 padding: 0;
+	 margin: 0;
+	 color: #686868;
+	 backface-visibility: hidden;
+	 font-weight: 00;
+}
+ .tablinks:hover p {
+	 color: white;
+	 opacity: 1;
+}
+ @media screen and (max-width: 512px) {
+	 .tablinks:hover p {
+		 color: #686868;
+		 opacity: 0.6;
+	}
+}
+/* Tabs text bigger */
+ .tablinks p:before {
+	 content: attr(data-title);
+	 position: absolute;
+	 height: auto;
+	 width: auto;
+	 color: white;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 opacity: 0.1;
+	 font-size: 40px;
+	 transition: 1s ease-out;
+	 z-index: -1;
+	 font-weight: 600;
+	 top: 110%;
+}
+ @media screen and (max-width: 512px) {
+	 .tablinks p:before {
+		 display: none;
+	}
+}
+ .tablinks:hover p:before {
+	 opacity: 0.1;
+	 font-size: 40px;
+	 top: -80%;
+}
+/* tab content */
+ .wrapper_tabcontent {
+	 background-color: white;
+	 margin-top: 0px;
+	 z-index: -3;
+	 position: relative;
+	 opacity: 1;
+	 padding: 40px 60px;
+	 overflow: hidden;
+	 transition: all 1s ease;
+	 top: 0;
+     color: black;
+     height: 350px;
+}
+ .tabcontent {
+	 display: none;
+	 min-height: 180px;
+}
+ @keyframes tabEffect {
+	 from {
+		 top: -40px;
+	}
+	 to {
+		 top: 0px;
+	}
+}
+ .tabcontent.active {
+	 transition: all 1s ease;
+	 display: block;
+}
+/* Tab content line */
+ .wrapper_tabcontent:after {
+	 content: "";
+	 height: 5px;
+	 width: 100%;
+	 position: absolute;
+	 background-image: linear-gradient(135deg, #C31313 0%, #764ba2 100%);
+	 left: 0;
+	 bottom: 0; 
+	 z-index: -2;
+	 transition: all 1s ease;
+}
+/* Title */
+ .tabcontent h3 {
+	 font-size: 40px;
+	 top: 75px;
+	 transform: rotate(90deg);
+	 position: absolute;
+	 left: -90px;
+	 opacity: 0.1;
+	 width: 200px;
+	 height: 60px;
+	 background: -webkit-linear-gradient(135deg, #C31313 0%, #764ba2 100%);
+	 -webkit-background-clip: text;
+	 padding: 0;
+	 animation: city 1s ease;
+}
+ @media screen and (max-width: 512px) {
+	 .tabcontent h3 {
+		 top: 65px;
+	}
+}
+ @keyframes city {
+	 from {
+		 left: -150px;
+	}
+	 to {
+		 left: -90px;
+	}
+}
+/* Text*/
+ .tabcontent p {
+	 color: black;
+	 margin: 0;
+	 padding: 0;
+	 line-height: 28px;
+	 font-weight: 600;
+	 transition: all 1s ease;
+	 animation: fadeEffect 0.6s ease;
+	 width: 100%;
+	 font-size: 16px;
+	 font-family: "IBM Plex Sans", sans-serif;
+}
+ @media screen and (max-width: 512px) {
+	 .tabcontent p {
+		 font-size: 14px;
+		 line-height: 26px;
+	}
+}
+ @keyframes fadeEffect {
+	 from {
+		 opacity: 0;
+		 margin-left: 30px;
+	}
+	 to {
+		 opacity: 1;
+		 margin-left: 0;
+	}
+}
