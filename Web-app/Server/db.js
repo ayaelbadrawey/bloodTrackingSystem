@@ -18,6 +18,14 @@ app.get("/api/get", (req,res) => {
         
     });
 });
+app.get("/api/get/hospitals", (req,res) => {
+    const sql = "SELECT * FROM hsopital";
+    db.query(sql,(err, result) => {
+        console.log(result);
+        res.send(result);
+        
+    });
+});
 app.get("/api/get/bloodbank", (req,res) => {
     const email = req.query.email;
     const sql = "SELECT * FROM bloodbank WHERE bbEmail='"+email+"'";
@@ -27,6 +35,6 @@ app.get("/api/get/bloodbank", (req,res) => {
         
     });
 });
-app.listen(3000, ()=> {
-    console.log("running on port 3000");
+app.listen(4000, ()=> {
+    console.log("running on port 4000");
 });

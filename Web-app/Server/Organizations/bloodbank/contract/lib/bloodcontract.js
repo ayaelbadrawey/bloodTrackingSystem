@@ -69,7 +69,7 @@ class BloodContract extends Contract {
     async instantiateBlood(ctx) {
     
         console.log('============= ADD BLOOD ===========');
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true});
+        const wb = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
         var ws_blood = wb.Sheets["Blood"];
         console.log('read sheet');
         const bloodData = xlsx.utils.sheet_to_json(ws_blood, {raw:false});
@@ -87,8 +87,8 @@ class BloodContract extends Contract {
      */
     async instantiateTrasnprtation(ctx){
         console.log('============= ADD UNDER TRANSPORTATION STATES ===========');
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true}); 
-        var ws_tran = wb.Sheets["Under_Transportation"];
+        const wb1 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true}); 
+        var ws_tran = wb1.Sheets["Under_Transportation"];
         var tran = xlsx.utils.sheet_to_json(ws_tran, {raw:false});
         console.log(tran[0]);
         for (let i = 0; i < tran.length; i++) {
@@ -168,9 +168,9 @@ class BloodContract extends Contract {
      */
     async instantiateDonation(ctx){
         console.log('============= ADD DONATION ==========='); 
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true});
+        const wb2 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
 
-        var ws_don = wb.Sheets["Donation"];
+        var ws_don = wb2.Sheets["Donation"];
         var donation = xlsx.utils.sheet_to_json(ws_don, {raw:false});
 
         console.log(donation[0]);
@@ -188,9 +188,9 @@ class BloodContract extends Contract {
     async instantiateDelivered(ctx){
 
         console.log('============= ADD DELIVERED STATE ==========='); 
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true});
+        const wb3= xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
 
-        var ws_del = wb.Sheets["DELIEVERED"];
+        var ws_del = wb3.Sheets["DELIEVERED"];
         var del = xlsx.utils.sheet_to_json(ws_del, {raw:false});
        console.log(del[0]);
        for (let i = 0; i < del.length; i++) {
@@ -261,9 +261,9 @@ class BloodContract extends Contract {
     async instantiateused(ctx){
 
         console.log('============= ADD USED STATE ==========='); 
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true});
+        const wb4 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
 
-        var ws_used = wb.Sheets["USED"];
+        var ws_used = wb4.Sheets["USED"];
         var used = xlsx.utils.sheet_to_json(ws_used, {raw:false});
 
        console.log(used[0]);
@@ -314,9 +314,9 @@ class BloodContract extends Contract {
 
 
         console.log('============= ADD RECIEVE ==========='); 
-        const wb = xlsx.readFile("./InitialData.xlsx", {cellDates:true});
+        const wb5 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
 
-        var ws_recieve = wb.Sheets["Recieve 2"];
+        var ws_recieve = wb5.Sheets["Recieve"];
         var recieve = xlsx.utils.sheet_to_json(ws_recieve, {raw:false});
 
        console.log(recieve[0]);

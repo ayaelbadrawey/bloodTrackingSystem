@@ -30,8 +30,8 @@ async function main() {
 
 
         //instantiate data set
-        const instantiateBlood = await contract.submitTransaction('instantiateBlood');
-        console.log(' instantiate blood complete.');
+        //const instantiateBlood = await contract.submitTransaction('instantiateBlood');
+        //console.log(' instantiate blood complete.');
 
         const instantiateDonation = await contract.submitTransaction('instantiateDonation');
         console.log(' instantiate Donation complete.');

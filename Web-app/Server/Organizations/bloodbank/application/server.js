@@ -311,7 +311,7 @@ app.route('/get/history').get(async(req, res, next)=>{
     
 });
 
-app.route('/query/bloodbank').get(async(req, res, next)=>{
+app.route('/query/bloodbank/blood').get(async(req, res, next)=>{
     const gateway = new Gateway();
     try {
 
@@ -341,11 +341,143 @@ app.route('/query/bloodbank').get(async(req, res, next)=>{
         const contract = await network.getContract('bloodcontract');
 
         console.log('--------------------Query Blood Bags of Blood Bank--------------------');
-        const qbloodbankResponse = await contract.evaluateTransaction('queryBloodBankOwner', id1);
-        console.log(`${qbloodbankResponse.toString()}`);
+        const qbloodbankResponse = await contract.evaluateTransaction('queryBloodBankOwner', oid1);
+        //console.log(`${qbloodbankResponse.toString()}`);
         console.log('Transaction complete.');
+        const output = JSON.parse(qbloodbankResponse)
 
-        const output = qbloodbankResponse.toString()
+        var data="["
+        var len = Object.keys(output).length 
+
+        for(var i =0;i<len;i++){
+            let objectOutput = output[i];
+            if(objectOutput.Key.includes("process")){
+                var bloods = (objectOutput.Record.bloodNumber)
+                if(bloods.includes(",")){
+                    bloodsArray = bloods.split(",");
+                    console.log("array",bloodsArray)
+                    console.log("len",bloodsArray.length)
+                    for(var j=0;j<bloodsArray.length;j++){
+                        let id1=bloodsArray[j]
+                        if(id1.includes("H"))
+                            continue;
+                        console.log(id1)
+                        console.log('--------------------Query Blood Bag--------------------');
+                        const qBagResponse1 = await contract.evaluateTransaction('queryBloodBag', id1);
+                        //console.log(`${qBagResponse1.toString()}`);
+                        console.log('Transaction complete.');
+                        const output = qBagResponse1.toString()
+                        if(data.length==1){
+                            data = data + output
+                        }else{
+                            data = data +","+output
+                        }
+                    }
+
+                }else{
+                    let id1=bloods
+                    console.log('--------------------Query Blood Bag--------------------');
+                    const qBagResponse1 = await contract.evaluateTransaction('queryBloodBag', id1);
+                    //console.log(`${qBagResponse1.toString()}`);
+                    console.log('Transaction complete.');
+                
+                    const output = qBagResponse1.toString()
+                   if(data.length==1){
+                       data = data + output
+                   }else{
+                        data = data +","+output
+                   }
+                }
+            }
+        }
+        
+        data = data+"]"
+        
+        console.log(JSON.parse(data))
+        const writeJsonFile = require('write-json-file');
+        (async () => {
+            await writeJsonFile('../../../../../../bloodTrackingSystem-react/src/components/contents/bloodbank/Blood-Bank-RetrieveBloodBagsData.json', JSON.parse(data));
+        })();
+    
+        console.log('This is after the write call');
+
+        res.status(200).json({
+            output
+        });
+    }
+     catch (error) {
+
+        console.log(`Error processing transaction. ${error}`);
+        console.log(error.stack);
+
+}   finally {
+        // Disconnect from the gateway
+        console.log('Disconnect from Fabric gateway.');
+        gateway.disconnect();
+
+}
+    
+});
+app.route('/query/bloodbank/process').get(async(req, res, next)=>{
+    const gateway = new Gateway();
+    try {
+
+        const oid1 = req.query.oid;
+
+        // Specify userName for network access
+        const userName = 'User1@org1.example.com';
+
+        // Load connection profile; will be used to locate a gateway
+        let connectionProfile = yaml.safeLoad(fs.readFileSync('../gateway/networkConnection.yaml', 'utf8'));
+
+        // Set connection options; identity and wallet
+        let connectionOptions = {
+            identity: userName,
+            wallet: wallet,
+            discovery: { enabled:false, asLocalhost: true }
+        };
+
+        // Connect to gateway using application specified parameters
+        console.log('Connect to Fabric gateway.');
+        await gateway.connect(connectionProfile, connectionOptions);
+
+        // Access PaperNet network
+        console.log('Use network channel: mychannel.');
+
+        const network = await gateway.getNetwork('mychannel');
+        const contract = await network.getContract('bloodcontract');
+
+        console.log('--------------------Query Processes of Blood Bank--------------------');
+        const qbloodbankResponse = await contract.evaluateTransaction('queryBloodBankOwner', oid1);
+        //console.log(`${qbloodbankResponse.toString()}`);
+        console.log('Transaction complete.');
+        const output = JSON.parse(qbloodbankResponse)
+        
+        var data='['
+        var len = Object.keys(output).length 
+    
+
+        for(var i =0;i<len;i++){
+            let objectOutput = output[i];
+            if(objectOutput.Key.includes("process")){
+                var json = JSON.stringify(objectOutput.Record)
+                if(data.length==1){
+                    data = data + json
+                }else{
+                    data = data + "," + json
+                }
+            }
+        }
+        data=data+']'
+        let jsonData = JSON.parse(data)
+        console.log(jsonData)
+        const writeJsonFile = require('write-json-file');
+
+        (async () => {
+            await writeJsonFile('../../../../../../bloodTrackingSystem-react/src/components/contents/bloodbank/Blood-Bank-RetrieveProcessesData.json',jsonData);
+        })();
+    
+        console.log('This is after the write call');
 
         res.status(200).json({
             output
@@ -400,6 +532,7 @@ app.route('/query/process').get(async(req, res, next)=>{
         console.log('Transaction complete.');
 
         const output = qprocessResponse1.toString()
+
 
         res.status(200).json({
             output
@@ -512,6 +645,7 @@ app.route('/query/all/process').get(async(req, res, next)=>{
 
         const output = qprocessResponse2.toString()
 
+    
         res.status(200).json({
             output
         });
