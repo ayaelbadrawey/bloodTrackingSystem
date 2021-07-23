@@ -43,11 +43,11 @@ async function main() {
         console.log(' instantiate delivered complete.');
 
         const instantiateUsed = await contract.submitTransaction('instantiateused');
-        console.log(' instantiate used complete.');
+        console.log(' instantiate delivered complete.');
 
         const instantiateRecieve = await contract.submitTransaction('instantiateRecieve');
-        console.log(' instantiate recieve complete.');
-       
+        console.log(' instantiate delivered complete.');
+      
 
     } catch (error) {
 

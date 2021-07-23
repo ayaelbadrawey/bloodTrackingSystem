@@ -35,6 +35,14 @@ app.get("/api/get/bloodbank", (req,res) => {
         
     });
 });
+app.get("/api/write/file", (req,res) => {
+    const file = req.query.file;
+    const writeJsonFile = require('write-json-file');
+    (async () => {
+        await writeJsonFile('../../../bloodTrackingSystem-react/src/components/contents/users/ViewHospitalByBloodTypeData.json', JSON.parse(file));
+    })();
+    res.send('This is after the write call');
+});
 app.listen(4000, ()=> {
     console.log("running on port 4000");
 });

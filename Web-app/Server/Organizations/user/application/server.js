@@ -304,6 +304,92 @@ app.route('/search/type').get(async(req, res, next)=>{
 }
     
 });
+app.route('/query/hospital/blood').get(async(req, res, next)=>{
+    const gateway = new Gateway();
+    try {
+       
+
+        // Specify userName for network access
+        // const userName = 'isabella.issuer@magnetocorp.com';
+        const userName = 'Client@org1.example.com';
+
+        // Load connection profile; will be used to locate a gateway
+        let connectionProfile = yaml.safeLoad(fs.readFileSync('../gateway/networkConnection.yaml', 'utf8'));
+
+        // Set connection options; identity and wallet
+        let connectionOptions = {
+            identity: userName,
+            wallet: wallet,
+            discovery: { enabled:false, asLocalhost: true }
+        };
+
+        // Connect to gateway using application specified parameters
+        console.log('Connect to Fabric gateway.');
+        await gateway.connect(connectionProfile, connectionOptions);
+
+        // Access PaperNet network
+        console.log('Use network channel: mychannel.');
+
+        const network = await gateway.getNetwork('mychannel');
+        const contract = await network.getContract('bloodcontract');
+
+        var out = "" 
+        for(var k=100;k<110;k++){
+            var oid = "H"+k
+            console.log('--------------------Query Blood Bags of Hospital--------------------');
+            const qhospitalResponse = await contract.evaluateTransaction('queryHospitalOwner', oid);
+            //console.log(`${qhospitalResponse.toString()}`);
+            console.log('Transaction complete.');
+            const output = JSON.parse(qhospitalResponse)
+
+            var data=""
+            var len = Object.keys(output).length 
+    
+            console.log(k)
+            console.log(output[0])
+            for(var i =0;i<len;i++){
+                let objectOutput = output[i];
+                if(objectOutput.Key.includes("blood")){
+                    var state = (objectOutput.Record.currentState) 
+                    if(state == 'DELIEVERED'){
+                        var type = objectOutput.Record.type
+                        if(data.includes(type)){
+                            //nothing
+                        }else{
+                            if(data.length==0)
+                                data = data + type
+                            else    
+                                data = data +","+type
+                        }
+                    }else{
+                        continue
+                    }
+                }
+            }
+            console.log(data)
+            if(i != 109 )
+                out=out+"["+data+"]:"  
+            
+        }
+  
+        res.status(200).json({
+          out
+        });
+    }
+     catch (error) {
+
+        console.log(`Error processing transaction. ${error}`);
+        console.log(error.stack);
+
+}   finally {
+        // Disconnect from the gateway
+        console.log('Disconnect from Fabric gateway.');
+        gateway.disconnect();
+
+}
+    
+});
+
 
 httpServer.listen(PORT, () => {
     console.log('Server running on port', PORT);

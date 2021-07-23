@@ -50,6 +50,7 @@ class BloodContext extends Context {
  */
 class BloodContract extends Contract {
 
+    fileName ="../../InitialData2.xlsx"
     constructor() {
         // Unique namespace when multiple contracts per chaincode file
         super('org.blood');
@@ -69,7 +70,7 @@ class BloodContract extends Contract {
     async instantiateBlood(ctx) {
     
         console.log('============= ADD BLOOD ===========');
-        const wb = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
+        const wb = xlsx.readFile(this.fileName, {cellDates:true});
         var ws_blood = wb.Sheets["Blood"];
         console.log('read sheet');
         const bloodData = xlsx.utils.sheet_to_json(ws_blood, {raw:false});
@@ -87,7 +88,7 @@ class BloodContract extends Contract {
      */
     async instantiateTrasnprtation(ctx){
         console.log('============= ADD UNDER TRANSPORTATION STATES ===========');
-        const wb1 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true}); 
+        const wb1 = xlsx.readFile(this.fileName, {cellDates:true}); 
         var ws_tran = wb1.Sheets["Under_Transportation"];
         var tran = xlsx.utils.sheet_to_json(ws_tran, {raw:false});
         console.log(tran[0]);
@@ -168,7 +169,7 @@ class BloodContract extends Contract {
      */
     async instantiateDonation(ctx){
         console.log('============= ADD DONATION ==========='); 
-        const wb2 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
+        const wb2 = xlsx.readFile(this.fileName, {cellDates:true});
 
         var ws_don = wb2.Sheets["Donation"];
         var donation = xlsx.utils.sheet_to_json(ws_don, {raw:false});
@@ -188,7 +189,7 @@ class BloodContract extends Contract {
     async instantiateDelivered(ctx){
 
         console.log('============= ADD DELIVERED STATE ==========='); 
-        const wb3= xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
+        const wb3= xlsx.readFile(this.fileName, {cellDates:true});
 
         var ws_del = wb3.Sheets["DELIEVERED"];
         var del = xlsx.utils.sheet_to_json(ws_del, {raw:false});
@@ -261,7 +262,7 @@ class BloodContract extends Contract {
     async instantiateused(ctx){
 
         console.log('============= ADD USED STATE ==========='); 
-        const wb4 = xlsx.readFile("./InitialData2.xlsx", {cellDates:true});
+        const wb4 = xlsx.readFile(this.fileName, {cellDates:true});
 
         var ws_used = wb4.Sheets["USED"];
         var used = xlsx.utils.sheet_to_json(ws_used, {raw:false});
