@@ -33,19 +33,19 @@ async function main() {
         //const instantiateBlood = await contract.submitTransaction('instantiateBlood');
         //console.log(' instantiate blood complete.');
 
-        const instantiateDonation = await contract.submitTransaction('instantiateDonation');
+        const instantiateDonation = await contract.submitTransaction('instantiateDonation2');
         console.log(' instantiate Donation complete.');
         
-        const instantiateTransportation = await contract.submitTransaction('instantiateTrasnprtation');
+        const instantiateTransportation = await contract.submitTransaction('instantiateTrasnprtation2');
         console.log(' instantiate under transportation complete.');
 
-        const instantiateDeliverd = await contract.submitTransaction('instantiateDelivered');
+        const instantiateDeliverd = await contract.submitTransaction('instantiateDelivered2');
         console.log(' instantiate delivered complete.');
 
-        const instantiateUsed = await contract.submitTransaction('instantiateused');
+        const instantiateUsed = await contract.submitTransaction('instantiateused2');
         console.log(' instantiate delivered complete.');
 
-        const instantiateRecieve = await contract.submitTransaction('instantiateRecieve');
+        const instantiateRecieve = await contract.submitTransaction('instantiateRecieve2');
         console.log(' instantiate delivered complete.');
       
 

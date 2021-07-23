@@ -67,7 +67,7 @@ class BloodContract extends Contract {
     /** Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateBlood(ctx) {
+    async instantiateBlood2(ctx) {
     
         console.log('============= ADD BLOOD ===========');
         const wb = xlsx.readFile(this.fileName, {cellDates:true});
@@ -86,7 +86,7 @@ class BloodContract extends Contract {
      * Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateTrasnprtation(ctx){
+    async instantiateTrasnprtation2(ctx){
         console.log('============= ADD UNDER TRANSPORTATION STATES ===========');
         const wb1 = xlsx.readFile(this.fileName, {cellDates:true}); 
         var ws_tran = wb1.Sheets["Under_Transportation"];
@@ -167,7 +167,7 @@ class BloodContract extends Contract {
      * Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateDonation(ctx){
+    async instantiateDonation2(ctx){
         console.log('============= ADD DONATION ==========='); 
         const wb2 = xlsx.readFile(this.fileName, {cellDates:true});
 
@@ -186,7 +186,7 @@ class BloodContract extends Contract {
      * Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateDelivered(ctx){
+    async instantiateDelivered2(ctx){
 
         console.log('============= ADD DELIVERED STATE ==========='); 
         const wb3= xlsx.readFile(this.fileName, {cellDates:true});
@@ -259,7 +259,7 @@ class BloodContract extends Contract {
      * Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateused(ctx){
+    async instantiateused2(ctx){
 
         console.log('============= ADD USED STATE ==========='); 
         const wb4 = xlsx.readFile(this.fileName, {cellDates:true});
@@ -311,7 +311,7 @@ class BloodContract extends Contract {
      * Instantiate to perform any setup of the ledger that might be required.
      * @param {Context} ctx the transaction context
      */
-    async instantiateRecieve(ctx){
+    async instantiateRecieve2(ctx){
 
 
         console.log('============= ADD RECIEVE ==========='); 
