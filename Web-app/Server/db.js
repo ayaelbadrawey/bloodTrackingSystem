@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 const db = createPool({
     host:"localhost",
     user:"root",
-    password: "root12345",
+    password: "welcome1234",
     database:"info",
     connectionLimit: 10
 })
