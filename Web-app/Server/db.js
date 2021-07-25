@@ -24,6 +24,13 @@ app.get("/api/get", (req,res) => {
     });
 });
 app.get("/api/get/hospitals", (req,res) => {
+    const sql = "SELECT * FROM info.hsopital";
+    db.query(sql,(err, result) => {
+        console.log(result);
+        res.send(result);   
+    });
+});
+app.get("/api/get/hospital", (req,res) => {
     const email = req.query.email;
     const sql = "SELECT * FROM info.hsopital where hEmail = '"+email+"';";
     db.query(sql,(err, result) => {

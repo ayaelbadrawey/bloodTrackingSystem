@@ -176,10 +176,25 @@ app.route('/query/donor').get(async(req, res, next)=>{
         console.log(`${qdonorResponse.toString()}`);
         console.log('Transaction complete.');
 
-        const output = qdonorResponse.toString()
+        const output = JSON .parse(qdonorResponse)
+        const len = Object.keys(output).length 
+        let file = "["
+        for(var i=0;i<len;i++){
+            if(file.length==1){
+                file = file+JSON.stringify(output[i].Record)
+            }else{
+                file = file+","+JSON.stringify(output[i].Record)
+            }
+        }
+        file = file +"]"
+        console.log(JSON.parse(file))
+        const writeJsonFile = require('write-json-file');
+        (async () => {
+            await writeJsonFile('../../../../../../bloodTrackingSystem-react/src/components/contents/users/User-RetrieveBloodBagsData.json', JSON.parse(file));
+        })();
 
         res.status(200).json({
-            output
+            file
         });
     }
      catch (error) {
