@@ -117,10 +117,33 @@ app.route('/query/all/bags').get(async(req, res, next)=>{
         console.log(`${qBagResponse2.toString()}`);
         console.log('Transaction complete.');
 
-        const output = qBagResponse2.toString()
+        const output = JSON.parse(qBagResponse2)
+
+        var data="["
+        var len = Object.keys(output).length 
+
+        for(var i =0;i<len;i++){
+            let objectOutput = output[i];
+            if(data.length==1){
+                data = data + JSON.stringify(objectOutput)
+            }else{
+                data = data+"," + JSON.stringify(objectOutput)
+            }
+        }
+        
+        data = data+"]"
+        
+        console.log(JSON.parse(data))
+        const writeJsonFile = require('write-json-file');
+        (async () => {
+            await writeJsonFile('../../../../../../bloodTrackingSystem-react/src/components/contents/supervision/Supervision-RetrieveBloodBagsData.json', JSON.parse(data));
+        })();
+    
+        console.log('This is after the write call');
+
 
         res.status(200).json({
-            output
+            data
         });
     }
      catch (error) {
@@ -279,7 +302,30 @@ app.route('/query/all/process').get(async(req, res, next)=>{
         console.log(`${qprocessResponse2.toString()}`);
         console.log('Transaction complete.');
 
-        const output = qprocessResponse2.toString()
+        const output = JSON.parse(qprocessResponse2)
+
+        var data="["
+        var len = Object.keys(output).length 
+
+        for(var i =0;i<len;i++){
+            let objectOutput = output[i];
+            if(data.length==1){
+                data = data + JSON.stringify(objectOutput)
+            }else{
+                data = data+"," + JSON.stringify(objectOutput)
+            }
+        }
+        
+        data = data+"]"
+        
+        console.log(JSON.parse(data))
+        const writeJsonFile = require('write-json-file');
+        (async () => {
+            await writeJsonFile('../../../../../../bloodTrackingSystem-react/src/components/contents/supervision/Supervision-RetrieveProcessesData.json', JSON.parse(data));
+        })();
+    
+        console.log('This is after the write call');
+
 
         res.status(200).json({
             output
