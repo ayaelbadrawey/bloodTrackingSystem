@@ -24,7 +24,7 @@ app.get("/api/get", (req,res) => {
     });
 });
 app.get("/api/get/hospitals", (req,res) => {
-    const sql = "SELECT * FROM info.hsopital";
+    const sql = "SELECT * FROM info.hospital";
     db.query(sql,(err, result) => {
         console.log(result);
         res.send(result);   
@@ -32,7 +32,7 @@ app.get("/api/get/hospitals", (req,res) => {
 });
 app.get("/api/get/hospital", (req,res) => {
     const email = req.query.email;
-    const sql = "SELECT * FROM info.hsopital where hEmail = '"+email+"';";
+    const sql = "SELECT * FROM info.hospital where hEmail = '"+email+"';";
     db.query(sql,(err, result) => {
         console.log(result);
         res.send(result);   
@@ -74,6 +74,23 @@ app.post("/insert/donor", (req,res) => {
     db.query(sql, [ID, Email], (err, result) => {
         console.log(result);
         console.log(err)
+        res.send(result);
+    });
+});
+
+app.get("/get/patient", (req,res) => {
+    const email = req.query.email;
+    const sql = "SELECT * FROM info.patient WHERE dEmail='"+email+"'";
+    db.query(sql,(err, result) => {
+        console.log(result);
+        res.send(result);
+    });
+});
+app.get("/get/donor", (req,res) => {
+    const email = req.query.email;
+    const sql = "SELECT * FROM donor WHERE dEmail='"+email+"'";
+    db.query(sql,(err, result) => {
+        console.log(result);
         res.send(result);
     });
 });
