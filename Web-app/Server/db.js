@@ -80,7 +80,7 @@ app.post("/insert/donor", (req,res) => {
 
 app.get("/get/patient", (req,res) => {
     const email = req.query.email;
-    const sql = "SELECT * FROM info.patient WHERE dEmail='"+email+"'";
+    const sql = "SELECT * FROM info.patient WHERE pEmail='"+email+"'";
     db.query(sql,(err, result) => {
         console.log(result);
         res.send(result);

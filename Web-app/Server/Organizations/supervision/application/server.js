@@ -124,10 +124,13 @@ app.route('/query/all/bags').get(async(req, res, next)=>{
 
         for(var i =0;i<len;i++){
             let objectOutput = output[i];
+            const owner = JSON.stringify(objectOutput).replace("ownerID","currentOwner")
+            const safe = owner.replace("SAFE","safe")
+            const safe2 = safe.replace("NOT_safe","not safe")
             if(data.length==1){
-                data = data + JSON.stringify(objectOutput)
+                data = data + safe2
             }else{
-                data = data+"," + JSON.stringify(objectOutput)
+                data = data+"," + safe2
             }
         }
         

@@ -420,10 +420,16 @@ app.route('/query/bloodbank/blood').get(async(req, res, next)=>{
                         //console.log(`${qBagResponse1.toString()}`);
                         console.log('Transaction complete.');
                         const output = qBagResponse1.toString()
+
+                        const date = JSON.parse(output)
+                        console.log(date)
+
+                        const output2 = output.replace("SAFE","safe")
+                        const output3 = output2.replace("NOT_safe","not safe")
                         if(data.length==1){
-                            data = data + output
+                            data = data + output3
                         }else{
-                            data = data +","+output
+                            data = data +","+output3
                         }
                     }
 
@@ -435,17 +441,20 @@ app.route('/query/bloodbank/blood').get(async(req, res, next)=>{
                     console.log('Transaction complete.');
                 
                     const output = qBagResponse1.toString()
+                    const output2 = output.replace("SAFE","safe")
+                    const output3 = output2.replace("NOT_safe","not safe")
                    if(data.length==1){
-                       data = data + output
+                       data = data + output3
                    }else{
-                        data = data +","+output
+                        data = data +","+output3
                    }
                 }
             }
         }
         
         data = data+"]"
-        
+    
+
         console.log(JSON.parse(data))
         const writeJsonFile = require('write-json-file');
         (async () => {
